@@ -54,10 +54,10 @@ public class EntityZombie extends EntityWalkingMob implements EntitySmite {
     @Override
     protected void initEntity() {
         this.setMaxHealth(20);
-        
+
         super.initEntity();
 
-        this.setDamage(new int[] { 0, 2, 3, 4 });
+        this.setDamage(new int[]{0, 2, 3, 4});
 
         if (this.namedTag.contains("Armor") && this.namedTag.get("Armor") instanceof ListTag) {
             ListTag<CompoundTag> listTag = this.namedTag.getList("Armor", CompoundTag.class);
@@ -157,18 +157,11 @@ public class EntityZombie extends EntityWalkingMob implements EntitySmite {
                 drops.add(armor[Utils.rand(0, 3)]);
             }
 
-            if (Utils.rand(1, 3) == 1) {
-                switch (Utils.rand(1, 3)) {
-                    case 1:
-                        drops.add(Item.get(Item.IRON_INGOT, 0, Utils.rand(0, 1)));
-                        break;
-                    case 2:
-                        drops.add(Item.get(Item.CARROT, 0, Utils.rand(0, 1)));
-                        break;
-                    case 3:
-                        drops.add(Item.get(Item.POTATO, 0, Utils.rand(0, 1)));
-                        break;
-                }
+
+            if (Utils.rand(1, 4) <= 2.5) {
+                drops.add(Item.get(Item.IRON_INGOT, 0, Utils.rand(0, 1)));
+            } else if (Utils.rand(1, 120) == 1) {
+                drops.add(Item.get(Item.POTATO, 0, Utils.rand(0, 1)));
             }
         }
 
@@ -261,6 +254,7 @@ public class EntityZombie extends EntityWalkingMob implements EntitySmite {
 
     /**
      * Get held tool
+     *
      * @return the tool this zombie has in hand or null
      */
     public Item getTool() {

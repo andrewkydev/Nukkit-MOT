@@ -2930,7 +2930,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     this.server.getLogger().debug(this.username + " disconnected with protocol (minimumProtocol) " + this.protocol);
                     break;
                 } else if (this.server.maximumProtocol >= Math.max(0, this.server.minimumProtocol) && this.protocol > this.server.maximumProtocol) {
-                    this.close("", "Support for this Minecraft version is not enabled");
+                    this.close("", this.server.getProperty(""))
                     this.server.getLogger().debug(this.username + " disconnected with unsupported protocol (maximumProtocol) " + this.protocol);
                     break;
                 }
