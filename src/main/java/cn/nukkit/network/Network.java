@@ -122,7 +122,7 @@ public class Network {
     public void processInterfaces() {
         for (SourceInterface interfaz : this.interfaces) {
             try {
-                interfaz.process();
+                interfaz.eprocess();
             } catch (Exception e) {
                 if (Nukkit.DEBUG > 1) {
                     this.server.getLogger().logException(e);
@@ -262,7 +262,7 @@ public class Network {
                     try {
                         if (raknetProtocol > 8) {
                             pk.decode();
-                        }else { // version < 1.6
+                        } else { // version < 1.6
                             pk.setBuffer(buf, pk.protocol < ProtocolInfo.v1_2_0 ? 1 : 3);
                             pk.decode();
                         }
