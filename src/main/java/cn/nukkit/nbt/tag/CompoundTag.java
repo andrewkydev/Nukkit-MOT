@@ -5,7 +5,6 @@ import cn.nukkit.nbt.stream.NBTOutputStream;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -50,7 +49,7 @@ public class CompoundTag extends Tag implements Cloneable {
         }
     }
 
-    public Collection<Tag> getAllTags() {
+    public CompoundTag getAllTags() {
         return tags.values();
     }
 
@@ -355,7 +354,7 @@ public class CompoundTag extends Tag implements Cloneable {
     public String toString() {
         StringJoiner joiner = new StringJoiner(",\n\t");
         tags.forEach((key, tag) -> joiner.add('\'' + key + "' : " + tag.toString().replace("\n", "\n\t")));
-        return "CompoundTag '" + this.getName() + "' (" + tags.size() + " entries) {\n\t" + joiner.toString() + "\n}";
+        return "CompoundTag '" + this.getName() + "' (" + tags.size() + " entries) {\n\t" + joiner + "\n}";
     }
 
     @Override
